@@ -67,7 +67,10 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
         {
             try
             {
-                return _sqlContext.Set<TEntity>().Find(id);
+                var obj = _sqlContext.Set<TEntity>().Find(id);
+                if (obj == null) throw new Exception("Item não encontrado.");
+                
+                return obj;
             }
             catch (Exception ex)
             {

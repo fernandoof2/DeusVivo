@@ -5,14 +5,11 @@ namespace DeusVivo.Infrastructure.Data
 {
     public class SqlContext : DbContext
     {
-        public SqlContext()
-        {
-
-        }
-
         public SqlContext(DbContextOptions<SqlContext> options) : base(options) { }
 
         public DbSet<Cargo> Cargos { get; set; }
+        public DbSet<Companhia> Companhias { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         public override int SaveChanges()
         {

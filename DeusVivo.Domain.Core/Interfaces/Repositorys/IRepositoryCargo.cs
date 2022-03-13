@@ -2,7 +2,7 @@
 
 namespace DeusVivo.Domain.Core.Interfaces.Repositorys
 {
-    public interface IServiceCargo : IRepositoryBase<Cargo>
+    public interface IRepositoryCargo : IRepositoryBase<Cargo>
     {
 
     }

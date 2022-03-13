@@ -1,4 +1,4 @@
-namespace DeusVivo.API.Service
+namespace DeusVivo.API
 {
     public class WeatherForecast
     {

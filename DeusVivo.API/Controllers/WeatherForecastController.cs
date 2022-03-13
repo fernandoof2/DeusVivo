@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace DeusVivo.API.Service.Controllers
+namespace DeusVivo.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
