@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DeusVivo.Domain.Core\DeusVivo.Domain.Core.csproj" />
+    <ProjectReference Include="..\DeusVivo.Domain.Services\DeusVivo.Domain.Services.csproj" />
     <ProjectReference Include="..\DeusVivo.Domain\DeusVivo.Domain.csproj" />
   </ItemGroup>
 

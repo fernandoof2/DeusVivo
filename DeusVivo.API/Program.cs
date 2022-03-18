@@ -1,4 +1,7 @@
 using DeusVivo.Domain.Core.Interfaces.Repositorys;
+using DeusVivo.Domain.Core.Interfaces.Services;
+using DeusVivo.Domain.Entitys;
+using DeusVivo.Domain.Services;
 using DeusVivo.Infrastructure.Data;
 using DeusVivo.Infrastructure.Data.Repositorys;
 using Microsoft.EntityFrameworkCore;
@@ -13,14 +16,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRepositoryCargo, RepositoryCargo>();
-builder.Services.AddScoped<IRepositoryCompanhia, RepositoryCompanhia>();
-builder.Services.AddScoped<IRepositoryUsuario, RepositoryUsuario>();
-
 builder.Services.AddDbContext<SqlContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnectionString"),
     new MySqlServerVersion(new Version(8, 0, 15)))
 );
+
+builder.Services.Append<> .AddScoped<IRepositoryBase<Cargo>, RepositoryBase<Cargo>>();
+builder.Services.AddTransient<IServiceCargo, ServiceCargo>();
 
 var app = builder.Build();
 

@@ -12,12 +12,14 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
             _sqlContext = sqlContext;
         }
 
-        public void Add(TEntity obj)
+        public TEntity Add(TEntity obj)
         {
             try
             {
                 _sqlContext.Set<TEntity>().Add(obj);
                 _sqlContext.SaveChanges();
+
+                return obj;
             }
             catch (Exception ex)
             {

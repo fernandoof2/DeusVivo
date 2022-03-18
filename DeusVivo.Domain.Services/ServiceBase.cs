@@ -12,9 +12,9 @@ namespace DeusVivo.Domain.Services
             _repository = repository;
         }
 
-        public void Add(TEntity obj)
+        public TEntity Add(TEntity obj)
         {
-            _repository.Add(obj);
+            return _repository.Add(obj);
         }
 
         public void Update(TEntity obj)

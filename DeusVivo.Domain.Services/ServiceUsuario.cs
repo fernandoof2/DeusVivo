@@ -6,8 +6,7 @@ namespace DeusVivo.Domain.Services
 {
     public class ServiceUsuario : ServiceBase<Usuario>, IServiceUsuario
     {
-        public ServiceUsuario(IRepositoryBase<Usuario> repository) : base(repository)
-        {
+        public ServiceUsuario(IRepositoryBase<Usuario> repository) : base(repository){
         }
     }
 }

@@ -18,6 +18,7 @@ namespace DeusVivo.Infrastructure.Data
                 if (entry.State == EntityState.Added)
                 {
                     entry.Property("CriacaoDataHora").CurrentValue = DateTime.Now;
+                    entry.Property("AlteracaoDataHora").CurrentValue = DateTime.Now;
                     //entry.Property("CriacaoId").CurrentValue = 1;
                 }
                 else if(entry.State == EntityState.Modified)

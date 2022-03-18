@@ -6,8 +6,7 @@ namespace DeusVivo.Domain.Services
 {
     public class ServiceCompanhia : ServiceBase<Companhia>, IServiceCompanhia
     {
-        public ServiceCompanhia(IRepositoryBase<Companhia> repository) : base(repository)
-        {
+        public ServiceCompanhia(IRepositoryBase<Companhia> repository) : base(repository){
         }
     }
 }

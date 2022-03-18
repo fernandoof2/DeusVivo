@@ -6,8 +6,7 @@ namespace DeusVivo.Domain.Services
 {
     public class ServiceCargo : ServiceBase<Cargo>, IServiceCargo
     {
-        public ServiceCargo(IRepositoryBase<Cargo> repository) : base(repository)
-        {
+        public ServiceCargo(IRepositoryBase<Cargo> repository) : base(repository) {
         }
     }
 }
