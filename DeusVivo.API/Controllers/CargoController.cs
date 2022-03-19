@@ -27,7 +27,6 @@ namespace DeusVivo.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
-
         }
 
         [HttpGet("{name}")]
@@ -42,7 +41,6 @@ namespace DeusVivo.API.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
             }
-
         }
 
         [HttpPost]
