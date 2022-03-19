@@ -1,5 +1,6 @@
 ﻿using DeusVivo.Domain.Core.Interfaces.Repositorys;
 using DeusVivo.Domain.Core.Interfaces.Services;
+using System.Linq.Expressions;
 
 namespace DeusVivo.Domain.Services
 {
@@ -17,14 +18,14 @@ namespace DeusVivo.Domain.Services
             return _repository.Add(obj);
         }
 
-        public void Update(TEntity obj)
+        public bool Update(TEntity obj)
         {
-            _repository.Update(obj);
+            return _repository.Update(obj);
         }
 
-        public void Delete(TEntity obj)
+        public bool Delete(TEntity obj)
         {
-            _repository.Delete(obj);
+            return _repository.Delete(obj);
         }
 
         public IEnumerable<TEntity> GetAll()
@@ -35,6 +36,10 @@ namespace DeusVivo.Domain.Services
         public TEntity GetById(int id)
         {
             return _repository.GetById(id);
+        }
+
+        public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "") { 
+            return _repository.Get(filter, orderBy, includeProperties);
         }
     }
 }

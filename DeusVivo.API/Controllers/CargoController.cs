@@ -1,6 +1,7 @@
 ﻿using DeusVivo.Domain.Core.Interfaces.Services;
 using DeusVivo.Domain.Entitys;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq.Expressions;
 
 namespace DeusVivo.API.Controllers
 {
@@ -20,7 +21,10 @@ namespace DeusVivo.API.Controllers
         {
             try
             {
-                return Ok(_service.GetAll());
+                //return Ok(_service.GetAll());
+
+                Expression<Func<Cargo, bool>> filter = a => a.Nome.Contains("t");
+                return Ok(_service.Get(filter));
             }
             catch (Exception ex)
             {
@@ -29,10 +33,21 @@ namespace DeusVivo.API.Controllers
             
         }
 
-        [HttpPut]
+        [HttpPost]
         public IActionResult Add([FromBody] Cargo cargo)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
             return Ok(_service.Add(cargo));
+        }
+
+        [HttpPut]
+        public IActionResult ret()
+        {
+            return Ok("aaaaa");
         }
 
     }

@@ -21,7 +21,7 @@ builder.Services.AddDbContext<SqlContext>(options =>
     new MySqlServerVersion(new Version(8, 0, 15)))
 );
 
-builder.Services.Append<> .AddScoped<IRepositoryBase<Cargo>, RepositoryBase<Cargo>>();
+builder.Services.AddScoped<IRepositoryBase<Cargo>, RepositoryBase<Cargo>>();
 builder.Services.AddTransient<IServiceCargo, ServiceCargo>();
 
 var app = builder.Build();
