@@ -19,8 +19,8 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
         {
             try
             {
-                _sqlContext.Set<TEntity>().Add(obj);
-                _sqlContext.SaveChangesAsync();
+                _dataset.Add(obj);
+                _sqlContext.SaveChanges();
 
                 return obj;
             }
@@ -44,11 +44,11 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
             }
         }
 
-        public bool Delete(TEntity obj)
+        public bool Delete(int id)
         {
             try
             {
-                _sqlContext.Set<TEntity>().Remove(obj);
+                _dataset.Remove(GetById(id));
                 _sqlContext.SaveChanges();
                 return true;
             }
@@ -62,11 +62,11 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
         {
             try
             {
-                return _sqlContext.Set<TEntity>().ToList();
+                return _dataset.ToList();
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro na leitura dos itens, msg: " + ex.Message);
+                throw new Exception("Erro na busca dos itens, msg: " + ex.Message);
             }
         }
 
@@ -74,40 +74,48 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
         {
             try
             {
-                var obj = _sqlContext.Set<TEntity>().Find(id);
+                var obj = _dataset.Find(id);
                 if (obj == null) throw new Exception("Item não encontrado.");
 
                 return obj;
             }
             catch (Exception ex)
             {
-                throw new Exception("Erro na leitura do item, msg: " + ex.Message);
+                throw new Exception("Erro na busca do item, msg: " + ex.Message);
             }
         }
 
         public IEnumerable<TEntity> Get(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null, string includeProperties = "")
         {
-            IQueryable<TEntity> query = _dataset;
+            try
+            {
+                IQueryable<TEntity> query = _dataset;
 
-            if (filter != null)
+                if (filter != null)
+                {
+                    query = query.Where(filter);
+                }
+
+                foreach (var includeProperty in includeProperties.Split
+                    (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(includeProperty);
+                }
+
+                if (orderBy != null)
+                {
+                    return orderBy(query).ToList();
+                }
+                else
+                {
+                    return query.ToList();
+                }
+            }
+            catch (Exception ex)
             {
-                query = query.Where(filter);
+                throw new Exception("Erro na busca dos itens, msg: " + ex.Message);
             }
 
-            foreach (var includeProperty in includeProperties.Split
-                (new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
-            {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
         }
     }
 }

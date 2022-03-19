@@ -23,9 +23,9 @@ namespace DeusVivo.Domain.Services
             return _repository.Update(obj);
         }
 
-        public bool Delete(TEntity obj)
+        public bool Delete(int id)
         {
-            return _repository.Delete(obj);
+            return _repository.Delete(id);
         }
 
         public IEnumerable<TEntity> GetAll()

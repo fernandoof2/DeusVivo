@@ -5,11 +5,11 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
 {
     public class RepositoryUsuario : RepositoryBase<Usuario>, IRepositoryUsuario
     {
-        private readonly SqlContext _sqlContext1;
+        private readonly SqlContext _sqlContext;
 
         public RepositoryUsuario(SqlContext sqlContext) : base(sqlContext)
         {
-            _sqlContext1 = sqlContext;
+            _sqlContext = sqlContext;
         }
     }
 }

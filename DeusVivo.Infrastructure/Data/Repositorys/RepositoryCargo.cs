@@ -5,11 +5,11 @@ namespace DeusVivo.Infrastructure.Data.Repositorys
 {
     public class RepositoryCargo : RepositoryBase<Cargo>, IRepositoryCargo
     {
-        private readonly SqlContext _sqlContext1;
+        private readonly SqlContext _sqlContext;
 
         public RepositoryCargo(SqlContext sqlContext) : base(sqlContext)
         {
-            _sqlContext1 = sqlContext;
+            _sqlContext = sqlContext;
         }
     }
 }
