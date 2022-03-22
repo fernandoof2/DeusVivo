@@ -38,7 +38,7 @@ namespace DeusVivo.API.Controllers
             try
             {
                 Expression<Func<CargoEO, bool>> filter = a => a.Nome.Contains(name.Trim());
-                return Ok(_service.Get(filter));
+                return Ok(_service.Get(filter, null, "CriacaoUsuario,AlteracaoUsuario"));
             }
             catch (Exception ex)
             {

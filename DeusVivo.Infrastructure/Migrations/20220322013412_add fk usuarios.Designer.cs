@@ -3,6 +3,7 @@ using System;
 using DeusVivo.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeusVivo.Infrastructure.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220322013412_add fk usuarios")]
+    partial class addfkusuarios
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -28,6 +30,9 @@ namespace DeusVivo.Infrastructure.Migrations
                     b.Property<DateTime?>("AlteracaoDataHora")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<int?>("AlteracaoId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("AlteracaoUsuarioId")
                         .HasColumnType("int");
 
@@ -36,6 +41,9 @@ namespace DeusVivo.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CriacaoDataHora")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<int?>("CriacaoId")
+                        .HasColumnType("int");
 
                     b.Property<int?>("CriacaoUsuarioId")
                         .HasColumnType("int");
