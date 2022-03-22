@@ -1,16 +1,17 @@
-﻿using DeusVivo.Domain.Entitys;
+﻿using DeusVivo.Domain.Core.Interfaces.Services;
+using DeusVivo.Domain.Entitys;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace DeusVivo.API.Auth
+namespace DeusVivo.Domain.Services
 {
-    public static class TokenService
+    public class ServiceToken : IServiceToken
     {
-        public static string GenerateToken(UsuarioEO usuario) {
+        public string GenerateToken(UsuarioEO usuario, string secret) {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+            var key = Encoding.ASCII.GetBytes(secret);
 
             var tokenDescriptor = new SecurityTokenDescriptor {
                 Subject = new ClaimsIdentity(new Claim[]

@@ -1,8 +1,8 @@
-﻿using DeusVivo.Domain.Core.Interfaces.Repositorys;
+﻿using DeusVivo.Domain.Core.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace DeusVivo.Infrastructure.Data.Repositorys
+namespace DeusVivo.Infrastructure.Data.Repositories
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {

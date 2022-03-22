@@ -1,10 +1,10 @@
 using DeusVivo.API.Auth;
-using DeusVivo.Domain.Core.Interfaces.Repositorys;
+using DeusVivo.Domain.Core.Interfaces.Repositories;
 using DeusVivo.Domain.Core.Interfaces.Services;
 using DeusVivo.Domain.Entitys;
 using DeusVivo.Domain.Services;
 using DeusVivo.Infrastructure.Data;
-using DeusVivo.Infrastructure.Data.Repositorys;
+using DeusVivo.Infrastructure.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -49,6 +49,8 @@ builder.Services.AddScoped<IRepositoryBase<CargoEO>, RepositoryBase<CargoEO>>();
 builder.Services.AddScoped<IRepositoryBase<UsuarioEO>, RepositoryBase<UsuarioEO>>();
 builder.Services.AddTransient<IServiceCargo, ServiceCargo>();
 builder.Services.AddTransient<IServiceUsuario, ServiceUsuario>();
+
+builder.Services.AddTransient<IServiceToken, ServiceToken>();
 
 
 var app = builder.Build();

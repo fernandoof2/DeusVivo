@@ -1,7 +1,7 @@
-﻿using DeusVivo.Domain.Core.Interfaces.Repositorys;
+﻿using DeusVivo.Domain.Core.Interfaces.Repositories;
 using DeusVivo.Domain.Entitys;
 
-namespace DeusVivo.Infrastructure.Data.Repositorys
+namespace DeusVivo.Infrastructure.Data.Repositories
 {
     public class RepositoryCargo : RepositoryBase<CargoEO>, IRepositoryCargo
     {

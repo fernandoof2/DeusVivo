@@ -11,10 +11,12 @@ namespace DeusVivo.API.Controllers
     public class LoginController : ControllerBase
     {
         private readonly IServiceUsuario _service;
+        private readonly IServiceToken _serviceToken;
 
-        public LoginController(IServiceUsuario service)
+        public LoginController(IServiceUsuario service, IServiceToken serviceToken)
         {
             _service = service;
+            _serviceToken = serviceToken;
         }
 
         [HttpPost]
@@ -33,7 +35,7 @@ namespace DeusVivo.API.Controllers
                 if (usuarioBanco == null)
                     return NotFound(new { message = "Usuario e senha inválidos"});
 
-                var token = TokenService.GenerateToken(usuarioBanco);
+                var token = _serviceToken.GenerateToken(usuarioBanco, Settings.Secret);
 
                 usuarioBanco.Senha = "";
 

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace DeusVivo.Domain.Core.Interfaces.Repositorys
+namespace DeusVivo.Domain.Core.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
     {

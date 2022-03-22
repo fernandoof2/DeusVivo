@@ -1,4 +1,4 @@
-﻿using DeusVivo.Domain.Core.Interfaces.Repositorys;
+﻿using DeusVivo.Domain.Core.Interfaces.Repositories;
 using DeusVivo.Domain.Core.Interfaces.Services;
 using System.Linq.Expressions;
 

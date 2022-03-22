@@ -1,13 +1,13 @@
-﻿using DeusVivo.Domain.Core.Interfaces.Repositorys;
+﻿using DeusVivo.Domain.Core.Interfaces.Repositories;
 using DeusVivo.Domain.Core.Interfaces.Services;
 using DeusVivo.Domain.Services;
 using DeusVivo.Infrastructure.Data;
-using DeusVivo.Infrastructure.Data.Repositorys;
+using DeusVivo.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DeusVivo.Infrastructure.Dependencys
+namespace DeusVivo.Infrastructure.Dependencies
 {
     public static class DependencyInjectionExtension
     {
