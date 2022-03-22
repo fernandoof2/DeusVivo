@@ -2,7 +2,7 @@
 
 namespace DeusVivo.Domain.Entitys
 {
-    public class Usuario : BaseId
+    public class UsuarioEO : BaseIdEO
     {
         [Required(ErrorMessage = "Campo {0} obrigatório.")]
         public string Login { get; set; }

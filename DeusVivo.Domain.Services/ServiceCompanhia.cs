@@ -4,9 +4,9 @@ using DeusVivo.Domain.Entitys;
 
 namespace DeusVivo.Domain.Services
 {
-    public class ServiceCompanhia : ServiceBase<Companhia>, IServiceCompanhia
+    public class ServiceCompanhia : ServiceBase<CompanhiaEO>, IServiceCompanhia
     {
-        public ServiceCompanhia(IRepositoryBase<Companhia> repository) : base(repository){
+        public ServiceCompanhia(IRepositoryBase<CompanhiaEO> repository) : base(repository){
         }
     }
 }

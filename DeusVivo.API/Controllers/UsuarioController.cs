@@ -1,6 +1,5 @@
 ﻿using DeusVivo.Domain.Core.Interfaces.Services;
 using DeusVivo.Domain.Entitys;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq.Expressions;
 
@@ -8,17 +7,16 @@ namespace DeusVivo.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CargoController : ControllerBase
+    public class UsuarioController : ControllerBase
     {
-        private readonly IServiceCargo _service;
+        private readonly IServiceUsuario _service;
 
-        public CargoController(IServiceCargo service)
+        public UsuarioController(IServiceUsuario service)
         {
-            _service = service;            
+            _service = service;
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult GetAll()
         {
             try
@@ -32,12 +30,11 @@ namespace DeusVivo.API.Controllers
         }
 
         [HttpGet("{name}")]
-        [Authorize]
         public IActionResult Get(string name)
         {
             try
             {
-                Expression<Func<CargoEO, bool>> filter = a => a.Nome.Contains(name.Trim());
+                Expression<Func<UsuarioEO, bool>> filter = a => a.Login.Contains(name.Trim());
                 return Ok(_service.Get(filter));
             }
             catch (Exception ex)
@@ -47,12 +44,11 @@ namespace DeusVivo.API.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "admin")]
-        public IActionResult Add([FromBody] CargoEO cargo)
+        public IActionResult Add([FromBody] UsuarioEO usuario)
         {
             try
             {
-                return Ok(_service.Add(cargo));
+                return Ok(_service.Add(usuario));
             }
             catch (Exception ex)
             {
@@ -61,12 +57,11 @@ namespace DeusVivo.API.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "string")]
-        public IActionResult Update([FromBody] CargoEO cargo)
+        public IActionResult Update([FromBody] UsuarioEO usuario)
         {
             try
             {
-                _service.Update(cargo);
+                _service.Update(usuario);
 
                 return Ok("Registro atualizado com sucesso!");
             }
@@ -80,7 +75,7 @@ namespace DeusVivo.API.Controllers
         public IActionResult Delete(int id)
         {
             try
-            {                
+            {
                 _service.Delete(id);
 
                 return Ok("Registro deletado com sucesso!");

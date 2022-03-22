@@ -2,7 +2,8 @@
 
 namespace DeusVivo.Domain.Core.Interfaces.Services
 {
-    public interface IServiceCargo : IServiceBase<Cargo>
+    public interface IServiceCargo : IServiceBase<CargoEO>
     {
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using DeusVivo.Domain.Entitys;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DeusVivo.Infrastructure.Data
 {
@@ -7,19 +8,22 @@ namespace DeusVivo.Infrastructure.Data
     {
         public SqlContext(DbContextOptions<SqlContext> options) : base(options) { }
 
-        public DbSet<Cargo> Cargos { get; set; }
-        public DbSet<Companhia> Companhias { get; set; }
-        public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<CargoEO> Cargos { get; set; }
+        public DbSet<CompanhiaEO> Companhias { get; set; }
+        public DbSet<UsuarioEO> Usuarios { get; set; }
 
         public override int SaveChanges()
-        {
+        {            
             foreach (var entry in ChangeTracker.Entries())
             {
+                if (entry.OriginalValues.Properties.Where(x => x.Name == "CriacaoId").ToList().Count == 0)
+                    continue;
+
                 if (entry.State == EntityState.Added)
                 {
                     entry.Property("CriacaoDataHora").CurrentValue = DateTime.Now;
                     entry.Property("AlteracaoDataHora").CurrentValue = DateTime.Now;
-                    //entry.Property("CriacaoId").CurrentValue = 1;
+                    //entry.Property("CriacaoId").CurrentValue = User.Identity.Name;
                 }
                 else if(entry.State == EntityState.Modified)
                 {

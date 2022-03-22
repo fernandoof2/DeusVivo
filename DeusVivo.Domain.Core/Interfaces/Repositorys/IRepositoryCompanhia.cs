@@ -2,7 +2,7 @@
 
 namespace DeusVivo.Domain.Core.Interfaces.Repositorys
 {
-    public interface IRepositoryCompanhia : IRepositoryBase<Companhia>
+    public interface IRepositoryCompanhia : IRepositoryBase<CompanhiaEO>
     {
 
     }

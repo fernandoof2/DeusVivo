@@ -2,7 +2,7 @@
 
 namespace DeusVivo.Domain.Core.Interfaces.Services
 {
-    public interface IServiceCompanhia : IServiceBase<Companhia>
+    public interface IServiceCompanhia : IServiceBase<CompanhiaEO>
     {
 
     }

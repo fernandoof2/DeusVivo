@@ -2,8 +2,8 @@
 
 namespace DeusVivo.Domain.Core.Interfaces.Services
 {
-    public interface IServiceUsuario : IServiceBase<Usuario>
+    public interface IServiceUsuario : IServiceBase<UsuarioEO>
     {
-
+        UsuarioEO GetUserLogin(UsuarioEO usuario);
     }
 }

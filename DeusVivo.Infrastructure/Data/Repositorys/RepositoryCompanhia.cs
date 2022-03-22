@@ -3,7 +3,7 @@ using DeusVivo.Domain.Entitys;
 
 namespace DeusVivo.Infrastructure.Data.Repositorys
 {
-    public class RepositoryCompanhia : RepositoryBase<Companhia>, IRepositoryCompanhia
+    public class RepositoryCompanhia : RepositoryBase<CompanhiaEO>, IRepositoryCompanhia
     {
         private readonly SqlContext _sqlContext;
 
