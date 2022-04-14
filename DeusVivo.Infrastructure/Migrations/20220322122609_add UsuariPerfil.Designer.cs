@@ -3,6 +3,7 @@ using System;
 using DeusVivo.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeusVivo.Infrastructure.Migrations
 {
     [DbContext(typeof(SqlContext))]
-    partial class SqlContextModelSnapshot : ModelSnapshot
+    [Migration("20220322122609_add UsuariPerfil")]
+    partial class addUsuariPerfil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +105,7 @@ namespace DeusVivo.Infrastructure.Migrations
 
                     b.HasIndex("CriacaoUsuarioId");
 
-                    b.ToTable("Perfis");
+                    b.ToTable("PerfilEO");
                 });
 
             modelBuilder.Entity("DeusVivo.Domain.Entitys.UsuarioEO", b =>

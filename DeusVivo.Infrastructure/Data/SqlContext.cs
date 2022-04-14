@@ -11,6 +11,14 @@ namespace DeusVivo.Infrastructure.Data
         public DbSet<CargoEO> Cargos { get; set; }
         public DbSet<CompanhiaEO> Companhias { get; set; }
         public DbSet<UsuarioEO> Usuarios { get; set; }
+        public DbSet<UsuarioPerfilEO> UsuariosPerfis { get; set; }
+        public DbSet<PerfilEO> Perfis { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<UsuarioPerfilEO>()
+                .HasKey(c => new { c.UsuarioId, c.PerfilId });
+        }
 
         public override int SaveChanges()
         {            

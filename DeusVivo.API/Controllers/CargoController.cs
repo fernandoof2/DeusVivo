@@ -14,7 +14,7 @@ namespace DeusVivo.API.Controllers
 
         public CargoController(IServiceCargo service)
         {
-            _service = service;            
+            _service = service;
         }
 
         [HttpGet]

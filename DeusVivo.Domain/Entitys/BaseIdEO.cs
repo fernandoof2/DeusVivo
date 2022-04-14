@@ -2,7 +2,7 @@
 
 namespace DeusVivo.Domain.Entitys
 {
-    public class BaseIdEO
+    public abstract class BaseIdEO
     {
         [Key]
         public int Id { get; set; }

@@ -20,8 +20,7 @@ namespace DeusVivo.Infrastructure.Data.Repositories
             try
             {
                 _dataset.Add(obj);
-                _sqlContext.SaveChanges();
-
+                _sqlContext.SaveChanges();                
                 return obj;
             }
             catch (Exception ex)
